@@ -30,3 +30,6 @@ Route::get('/forum/{id}', 'forum@question');
 Route::post('/forum/answer/{id}', 'AnswerController@create');
 
 Route::post('/forum/comment/{id}', 'CommentController@create');
+
+Route::post('/fetch/{id}', 'axios@update');
+Route::post('/fetch2/{id}', 'axios@update2');

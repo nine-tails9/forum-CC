@@ -14,7 +14,10 @@
 			  </div>
 			  <div class="panel-body">
 			    {{ $i->body }}
+
 			  </div>
+			  <div class="pull-right">{{$info[0]->user->name }}</div>
+			  <votes v-bind:cnt = "{{$i->upvotes}}" v-bind:id = "{{ $info[0]->user->id }}"></votes>
 			</div>
 
 		@endforeach
