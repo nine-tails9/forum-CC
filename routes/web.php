@@ -26,3 +26,7 @@ Route::post('/create', 'QuestionController@save');
 Route::get('/forum', 'forum@home');
 
 Route::get('/forum/{id}', 'forum@question');
+
+Route::post('/forum/answer/{id}', 'AnswerController@create');
+
+Route::post('/forum/comment/{id}', 'CommentController@create');
