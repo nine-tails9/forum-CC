@@ -18,3 +18,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/create', 'QuestionController@index');
+
+Route::post('/create', 'QuestionController@save');
+
+Route::get('/forum', 'forum@home');
+
+Route::get('/forum/{id}', 'forum@question');
