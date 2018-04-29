@@ -20,6 +20,7 @@ class CreateQuestionsTable extends Migration
             $table->integer('user_id');
             $table->string('title');
             $table->integer('upvotes')->default(0);
+            $table->integer('downvotes')->default(0);
         });
     }
 

@@ -43222,7 +43222,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['cnt', 'id', 'user', 'qid'],
+    props: ['downcnt', 'upcnt', 'id', 'user', 'qid'],
     created: function created() {
         var _this = this;
 
@@ -43241,7 +43241,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
 
             upvoted: false,
-            downvoted: false
+            downvoted: false,
+            up: this.upcnt,
+            down: this.downcnt
 
         };
     },
@@ -43251,6 +43253,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         increase: function increase() {
 
+            this.up++;
+            if (this.downvoted) this.down--;
             axios.post("http://127.0.0.1:8000/fetch/" + this.id + "/" + this.qid);
             axios.post("http://127.0.0.1:8000/upvote/" + this.qid);
             this.upvoted = true;
@@ -43258,7 +43262,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
         decrease: function decrease() {
-
+            if (this.upvoted) this.up--;
+            this.down++;
             axios.post("http://127.0.0.1:8000/fetch2/" + this.id + "/" + this.qid);
             axios.post("http://127.0.0.1:8000/downvote/" + this.qid);
 
@@ -43278,7 +43283,15 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "panel-footer" }, [
-    _c("p", [_vm._v("Total Votes : " + _vm._s(_vm.cnt))]),
+    _c("p", [
+      _c("span", { staticClass: "text-success" }, [
+        _vm._v("Upvotes : " + _vm._s(_vm.up))
+      ]),
+      _vm._v(" "),
+      _c("span", { staticClass: "text-danger" }, [
+        _vm._v(" Downvotes : " + _vm._s(_vm.down))
+      ])
+    ]),
     _vm._v(" "),
     !_vm.upvoted
       ? _c(

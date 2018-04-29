@@ -1,17 +1,17 @@
 <template>
     <div class="panel-footer">
-        <p>Total Votes : {{ cnt }}</p>
+        <p><span class="text-success">Upvotes : {{ up }}</span>&nbsp;<span class="text-danger"> Downvotes : {{down}}</span></p>
             <div class="btn btn-success btn-s" @click = "increase" v-if="!upvoted">Up</div>
             <div class="btn btn-danger btn-s" @click = "decrease" v-if="!downvoted">Down</div>
-        
+
     </div>
 </template>
 
 <script>
     export default {
         props: [
-
-            'cnt',
+            'downcnt',
+            'upcnt',
             'id',
             'user',
             'qid'
@@ -37,6 +37,8 @@
 
                 upvoted: false,
                 downvoted: false,
+                up: this.upcnt,
+                down:this.downcnt,
              
             }
         },
@@ -45,6 +47,8 @@
 
             increase: function(){
 
+                this.up++;
+                if(this.downvoted)this.down--;
                 axios.post("http://127.0.0.1:8000/fetch/" + this.id + "/" + this.qid);
                 axios.post("http://127.0.0.1:8000/upvote/" + this.qid);
                 this.upvoted = true;
@@ -53,7 +57,8 @@
             },
 
             decrease: function(){
-
+                if(this.upvoted)this.up--;
+                this.down++;
                 axios.post("http://127.0.0.1:8000/fetch2/" + this.id + "/" + this.qid);
                 axios.post("http://127.0.0.1:8000/downvote/" + this.qid);
 

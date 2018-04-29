@@ -16,7 +16,9 @@
 				</div>
 				</p>
 
-				<small>Votes : {{ $q->upvotes }}</small>
+				<small class="text-success">Upvotes : {{ $q->upvotes }}</small>
+
+				<small class="text-danger">Downvotes : {{ $q->downvotes }}</small>
 			</div>
 
 		@endforeach

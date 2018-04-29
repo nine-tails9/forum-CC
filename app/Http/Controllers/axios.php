@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Voted;
+use App\question;
 class axios extends Controller
 {
     //
@@ -58,6 +59,9 @@ class axios extends Controller
 
     	if($cnt){
 
+            question::where('id',$req['id'])->increment('upvotes',1);
+
+            question::where('id',$req['id'])->decrement('downvotes',1);
     		Voted::where([
     		['question_id', $req['id']],
     		['user_id', auth()->user()->id]
@@ -74,6 +78,8 @@ class axios extends Controller
     		$data['upvoted'] = 1;
 
     		$data->save();
+
+            question::where('id',$req['id'])->increment('upvotes',1);
     	}
 
 
@@ -87,6 +93,10 @@ class axios extends Controller
     		])->count();
 
     	if($cnt){
+
+            question::where('id',$req['id'])->increment('downvotes',1);
+
+            question::where('id',$req['id'])->decrement('upvotes',1);
 
     		Voted::where([
     		['question_id', $req['id']],
@@ -102,6 +112,8 @@ class axios extends Controller
     		$data['user_id'] = auth()->user()->id;
 
     		$data['downvoted'] = 1;
+
+            question::where('id',$req['id'])->increment('downvotes',1);
 
     		$data->save();
     	}

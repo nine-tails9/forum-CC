@@ -37,7 +37,7 @@ class QuestionController extends Controller
 
     public function  myQues(){
 
-        $data = question::where('user_id', auth()->user()->id)->get();
+        $data = question::where('user_id', auth()->user()->id)->latest()->get();
 
         return view('MyQues',compact('data'));
     }
