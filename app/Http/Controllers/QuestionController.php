@@ -34,4 +34,11 @@ class QuestionController extends Controller
     	return redirect('/forum');
 
     }
+
+    public function  myQues(){
+
+        $data = question::where('user_id', auth()->user()->id)->get();
+
+        return view('MyQues',compact('data'));
+    }
 }

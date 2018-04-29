@@ -47,5 +47,10 @@ class User extends Authenticatable
         return $this->hasMany(Voted::class);
     }
 
+    public function pendingAns(){
+
+        return $this->hasMany(pendingAns::class);
+    }
+
 
 }

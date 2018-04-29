@@ -35,6 +35,7 @@
 				<div class="form-group">
 					<label for="Question">Answer</label>
 			    <textarea class="form-control" name = "Abody" rows="3"></textarea>
+			    <input type="hidden" name="user" value="{{ $info[0]->user->id}}">
 			  </div>
 
 				<button type="submit" class="btn btn-primary">Post</button>
@@ -49,6 +50,7 @@
 			@foreach($info as $i)
 
 				@foreach($i->answers as $x)
+				@if($x->status)
 				<div class="panel panel-default">
 				  <div class="panel-heading">
 				  	{{ $x->body }}
@@ -80,6 +82,7 @@
 					  </div>
 				  </div>
 				<hr>
+				@endif
 				@endforeach
 			@endforeach
 		

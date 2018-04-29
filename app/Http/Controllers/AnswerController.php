@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\answer;
+use App\pendingAns;
 class AnswerController extends Controller
 {
     //
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function create(Request $req){
 
@@ -19,6 +24,15 @@ class AnswerController extends Controller
 
     	$ans['user_id'] = auth()->user()->id;
     	$ans->save();
+
+    	$nans = new pendingAns;
+
+    	$nans['from'] = auth()->user()->id;
+    	$nans['user_id'] = $req['user'];
+        $nans['ans_id'] = $ans['id'];
+
+    	$nans->save();
+
 
 
     	return back();

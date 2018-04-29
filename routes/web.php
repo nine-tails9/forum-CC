@@ -41,3 +41,12 @@ Route::get('/check/{id}', 'axios@check');
 Route::post('/upvote/{id}', 'axios@upvote');
 
 Route::post('/downvote/{id}', 'axios@downvote');
+
+Route::get('pending', 'PendingAnsController@show');
+
+Route::post('/approve/{id}', 'PendingAnsController@approve');
+
+
+Route::post('/discard/{id}', 'PendingAnsController@discard');
+
+Route::get('/myQues', 'QuestionController@myQues');

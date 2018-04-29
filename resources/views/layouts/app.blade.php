@@ -17,7 +17,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-inverse navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
 
@@ -39,7 +39,14 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         &nbsp;
+
+                    <li><a href="/forum">Forum</a></li>
+                    <li><a href="/pending">Pending Answers</a></li>
+                    <li><a href="/create">Post Question</a></li>
+                    
+                    <li><a href="/myQues">My Questions</a></li>
                     </ul>
+
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
