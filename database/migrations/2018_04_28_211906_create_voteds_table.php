@@ -18,6 +18,8 @@ class CreateVotedsTable extends Migration
             $table->timestamps();
             $table->integer('user_id');
             $table->integer('question_id');
+            $table->integer('upvoted')->default(0);
+            $table->integer('downvoted')->default(0);
         });
     }
 

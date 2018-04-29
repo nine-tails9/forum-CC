@@ -17,7 +17,7 @@
 
 			  </div>
 			  <div class="pull-right">{{$info[0]->user->name }}</div>
-			  <votes v-bind:cnt = "{{$i->upvotes}}" v-bind:id = "{{ $info[0]->user->id }}"></votes>
+			  <votes v-bind:cnt = "{{$i->upvotes}}" v-bind:id = "{{ $info[0]->user->id }}" v-bind:user = "{{auth()->user()->id }}" v-bind:qid = "{{ $i->id }}"></votes>
 			</div>
 
 		@endforeach

@@ -987,7 +987,7 @@ window.Vue = __webpack_require__(35);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('votes', __webpack_require__(53));
+Vue.component('votes', __webpack_require__(38));
 
 var app = new Vue({
   el: '#app'
@@ -43050,7 +43050,53 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(4)))
 
 /***/ }),
-/* 38 */,
+/* 38 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(39)
+/* script */
+var __vue_script__ = __webpack_require__(40)
+/* template */
+var __vue_template__ = __webpack_require__(41)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/votes.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-456e327c", Component.options)
+  } else {
+    hotAPI.reload("data-v-456e327c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
 /* 39 */
 /***/ (function(module, exports) {
 
@@ -43160,72 +43206,7 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 40 */,
-/* 41 */,
-/* 42 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 43 */,
-/* 44 */,
-/* 45 */,
-/* 46 */,
-/* 47 */,
-/* 48 */,
-/* 49 */,
-/* 50 */,
-/* 51 */,
-/* 52 */,
-/* 53 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(39)
-/* script */
-var __vue_script__ = __webpack_require__(54)
-/* template */
-var __vue_template__ = __webpack_require__(55)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/votes.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-456e327c", Component.options)
-  } else {
-    hotAPI.reload("data-v-456e327c", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 54 */
+/* 40 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -43241,10 +43222,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['cnt', 'id'],
+    props: ['cnt', 'id', 'user', 'qid'],
+    created: function created() {
+        var _this = this;
+
+        axios.get("http://127.0.0.1:8000/check/" + this.user).then(function (response) {
+
+            for (var i = 0; i < response.data[0].length; i++) {
+                if (response.data[0][i].question_id == _this.qid) {
+                    if (response.data[0][i].upvoted == 1) _this.upvoted = true;
+                    if (response.data[0][i].downvoted == 1) _this.downvoted = true;
+                }
+            }
+        });
+    },
     data: function data() {
 
-        return {};
+        return {
+
+            upvoted: false,
+            downvoted: false
+
+        };
     },
 
 
@@ -43252,19 +43251,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         increase: function increase() {
 
-            axios.post("http://127.0.0.1:8000/fetch/" + this.id);
+            axios.post("http://127.0.0.1:8000/fetch/" + this.id + "/" + this.qid);
+            axios.post("http://127.0.0.1:8000/upvote/" + this.qid);
+            this.upvoted = true;
+            this.downvoted = false;
         },
 
         decrease: function decrease() {
 
-            axios.post("http://127.0.0.1:8000/fetch2/" + this.id);
+            axios.post("http://127.0.0.1:8000/fetch2/" + this.id + "/" + this.qid);
+            axios.post("http://127.0.0.1:8000/downvote/" + this.qid);
+
+            this.downvoted = true;
+            this.upvoted = false;
         }
     }
 
 });
 
 /***/ }),
-/* 55 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -43274,17 +43280,21 @@ var render = function() {
   return _c("div", { staticClass: "panel-footer" }, [
     _c("p", [_vm._v("Total Votes : " + _vm._s(_vm.cnt))]),
     _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "btn btn-success btn-s", on: { click: _vm.increase } },
-      [_vm._v("Up")]
-    ),
+    !_vm.upvoted
+      ? _c(
+          "div",
+          { staticClass: "btn btn-success btn-s", on: { click: _vm.increase } },
+          [_vm._v("Up")]
+        )
+      : _vm._e(),
     _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "btn btn-danger btn-s", on: { click: _vm.decrease } },
-      [_vm._v("Down")]
-    )
+    !_vm.downvoted
+      ? _c(
+          "div",
+          { staticClass: "btn btn-danger btn-s", on: { click: _vm.decrease } },
+          [_vm._v("Down")]
+        )
+      : _vm._e()
   ])
 }
 var staticRenderFns = []
@@ -43296,6 +43306,12 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-456e327c", module.exports)
   }
 }
+
+/***/ }),
+/* 42 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

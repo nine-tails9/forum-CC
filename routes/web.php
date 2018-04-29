@@ -31,5 +31,13 @@ Route::post('/forum/answer/{id}', 'AnswerController@create');
 
 Route::post('/forum/comment/{id}', 'CommentController@create');
 
-Route::post('/fetch/{id}', 'axios@update');
-Route::post('/fetch2/{id}', 'axios@update2');
+Route::post('/fetch/{id}/{id2}', 'axios@update');
+
+Route::post('/fetch2/{id}/{id2}', 'axios@update2');
+
+Route::get('/check/{id}', 'axios@check');
+
+
+Route::post('/upvote/{id}', 'axios@upvote');
+
+Route::post('/downvote/{id}', 'axios@downvote');

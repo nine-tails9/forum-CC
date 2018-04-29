@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\question;
 use App\User;
+use App\Voted;
 class forum extends Controller
 {
     //
@@ -26,4 +27,5 @@ class forum extends Controller
     	return view('showQ', compact('info'));
 
     }
+
 }

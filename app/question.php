@@ -22,4 +22,8 @@ class question extends Model
 
         return $this->hasMany(comment::class);
     }
+    public function Voted(){
+
+        return $this->hasMany(Voted::class);
+    }
 }
