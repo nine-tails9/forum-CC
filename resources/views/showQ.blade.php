@@ -15,7 +15,12 @@
 			  <div class="panel-body">
 			    {{ $i->body }}
 
-			  <small><div class="pull-right">{{$info[0]->user->name }}</div></small>
+			  @foreach($i->tags as $tag)
+				<h4><span class="label label-default pull-right" style="margin:5px;">{{$tag->Tag_name}}
+                </h4>
+                @endforeach
+
+			  <small><div class="pull-left">By: {{$info[0]->user->name }}</div></small>
 			  </div>
 			  <votes v-bind:upcnt = "{{$i->upvotes}}" v-bind:downcnt = "{{$i->downvotes}}" v-bind:id = "{{ $info[0]->user->id }}" v-bind:user = "{{auth()->user()->id }}" v-bind:qid = "{{ $i->id }}"></votes>
 			</div>

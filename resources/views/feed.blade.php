@@ -15,10 +15,15 @@
 				</small>
 				</div>
 				</p>
+				@foreach($q->tags as $tag)
+				<h4><span class="label label-default pull-right" style="margin:5px;">{{$tag->Tag_name}}
+                </h4>
+                @endforeach
 
 				<small class="text-success">Upvotes : {{ $q->upvotes }}</small>
 
 				<small class="text-danger">Downvotes : {{ $q->downvotes }}</small>
+
 			</div>
 
 		@endforeach

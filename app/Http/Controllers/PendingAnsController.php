@@ -21,7 +21,8 @@ class PendingAnsController extends Controller
     	foreach ($data as $key)
     	{
     		$tem = User::where('id', $key['from'])->value('name');
-    		array_push($info,(object)array("id" => $key['ans_id'], "name" => $tem));
+            $body = answer::where('id', $key['ans_id'])->value('body');
+    		array_push($info,(object)array("id" => $key['ans_id'], "name" => $tem, "body" => $body));
 		}
     	return view('PendingAns', compact('info'));
 

@@ -21,7 +21,7 @@
 					<label for="Question">Question</label>
 			    <textarea class="form-control" name = "Qbody" rows="3"></textarea>
 			  </div>
-
+				<tags></tags>
 				<button type="submit" class="btn btn-primary">Submit</button>
 
 			</form>

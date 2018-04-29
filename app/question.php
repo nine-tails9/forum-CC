@@ -26,4 +26,9 @@ class question extends Model
 
         return $this->hasMany(Voted::class);
     }
+
+    public function tags(){
+
+        return $this->hasMany(tags::class);
+    }
 }

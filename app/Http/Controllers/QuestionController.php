@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\question;
+use App\tags;
 class QuestionController extends Controller
 {
     //
@@ -30,6 +31,16 @@ class QuestionController extends Controller
     	$ques['user_id'] = auth()->user()->id;
 
     	$ques->save();
+
+        for($i = 0; $i < sizeof($req['tags']); $i++){
+
+            $tags = new tags;
+            $tags['question_id'] = $ques['id'];
+            $tags['Tag_name'] = $req['tags'][$i];
+
+            $tags->save();
+
+        }
 
     	return redirect('/forum');
 

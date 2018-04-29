@@ -12,6 +12,7 @@
 		<tr>
 			
 			<th>From</th>
+			<th>Answer</th>
 			<th>Approve</th>
 
 			<th>Discard</th>
@@ -20,6 +21,7 @@
 		<tr>
 			<td>{{$x->name}}
 			</td>
+			<td>{{$x->body}}</td>
 			<td style="width: 10%;">
 				<form action="/approve/{{ $x->id }}" method="post">
 					{{ csrf_field()}}

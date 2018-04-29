@@ -16,6 +16,8 @@ window.Vue = require('vue');
  */
 
 Vue.component('votes', require('./components/votes.vue'));
+Vue.component('tags', require('./components/tags.vue'));
+
 
 const app = new Vue({
     el: '#app'

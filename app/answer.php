@@ -22,4 +22,13 @@ class answer extends Model
 
         return $this->hasMany(comment::class);
     }
+
+    public function pendingAns(){
+
+        return $this->hasMany(pendingAns::class);
+    }
+
+    
+
+
 }

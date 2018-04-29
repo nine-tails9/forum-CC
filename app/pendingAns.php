@@ -12,4 +12,12 @@ class pendingAns extends Model
 
     	return $this->belongsTo(User::class);
     }
+
+    public function answer(){
+
+
+    	return $this->hasOne(answer::class);
+    }
+    
+
 }

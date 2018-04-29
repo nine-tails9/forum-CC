@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'ForumGG') }}</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <!-- Styles -->
@@ -31,7 +31,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        Forumm
                     </a>
                 </div>
 
@@ -57,7 +57,7 @@
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
-                                    {{ Auth::user()->name }} {{Auth::user()->karma}}<span class="caret"></span>
+                                    {{ Auth::user()->name }}<span class="glyphicon glyphicon-flash" aria-hidden="true" style="margin-left:12px;"></span> {{Auth::user()->karma}}<span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu">
