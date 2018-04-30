@@ -22,7 +22,7 @@ class QuestionController extends Controller
     }
     public function index(){
 
-    	return view('QuesCreate');
+    	return view('QuesCreate', compact('data'));
     }
 
     public function save(Request $req){
@@ -64,5 +64,19 @@ class QuestionController extends Controller
         $data = question::where('user_id', auth()->user()->id)->latest()->get();
 
         return view('MyQues',compact('data'));
+    }
+
+    public function editQ(Request $req){
+
+        $data = question::where('id', $req['id'])->get();
+
+        return view('editQues', compact('data'));
+    }
+
+    public function update(Request $req){
+
+        question::where('id', $req['id'])->update(['body' => $req['Qbody'], 'title' => $req['Qtitle']]);
+        
+        return redirect('/forum');
     }
 }

@@ -23,6 +23,8 @@ Route::get('/create', 'QuestionController@index');
 
 Route::post('/create', 'QuestionController@save');
 
+Route::post('/updateQues/{id}', 'QuestionController@update');
+
 Route::get('/forum', 'forum@home');
 
 Route::get('/forum/{id}', 'forum@question');
@@ -51,9 +53,13 @@ Route::post('/discard/{id}', 'PendingAnsController@discard');
 
 Route::get('/myQues', 'QuestionController@myQues');
 
+
+Route::get('/editQ/{id}', 'QuestionController@editQ');
+
 Route::get('/search', 'QuestionController@tagSearch');
 
 Route::get('/adminPanel', 'HomeController@admin');
 
 
 Route::post('/makeAdmin/{id}', 'HomeController@make');
+
