@@ -26,6 +26,7 @@
 
 			</form>
 			</div>
+			<div class="row">@include('err')</div>
 		</div>
 	</div>
 @endsection

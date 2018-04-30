@@ -27,6 +27,14 @@ class QuestionController extends Controller
 
     public function save(Request $req){
 
+        $req->validate([
+
+            'body' => 'required',
+
+            'title' => 'required'
+
+        ]);
+
     	$ques = new question;
 
     	$ques['body'] = $req['Qbody'];

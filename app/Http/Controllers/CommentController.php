@@ -13,6 +13,11 @@ class CommentController extends Controller
     }
     public function create(Request $req){
 
+        $req->validate([
+
+            'body' => 'required',
+
+        ]);
 
     	$data = new comment;
 

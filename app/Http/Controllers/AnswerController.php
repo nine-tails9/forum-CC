@@ -15,6 +15,11 @@ class AnswerController extends Controller
 
     public function create(Request $req){
 
+        $req->validate([
+
+            'body' => 'required',
+
+        ]);
 
     	$ans = new answer;
 
