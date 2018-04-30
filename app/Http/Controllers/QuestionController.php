@@ -14,7 +14,12 @@ class QuestionController extends Controller
     {
         $this->middleware('auth');
     }
+    public function tagSearch(Request $req){
 
+        $data = question::join('tags', 'questions.id', '=', 'tags.question_id')->where('tags.Tag_name', $req['tag'])->get();
+        return view('results', compact('data'));
+
+    }
     public function index(){
 
     	return view('QuesCreate');

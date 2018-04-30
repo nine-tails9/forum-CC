@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
 
 	<div class="container">
@@ -15,8 +16,14 @@
 			</div><!-- /.row -->
 		</div>
 		<ul class="list-group">
-		@foreach($question as $q)
-			
+		@if(!count($data))
+		<div class="row">
+			<div class="col col-lg-6">
+			<h2>Sorry No Results found</h2>
+		</div>	
+		</div>
+		@endif
+		@foreach($data as $q)
 			<div class="list-group-item">
 				
 				<a href="forum/{{ $q->id }}">{{ $q->title }}
@@ -27,11 +34,6 @@
 				</small>
 				</div>
 				</p>
-				@foreach($q->tags as $tag)
-				<h4><span class="label label-default pull-right" style="margin:5px;">{{$tag->Tag_name}}
-                </h4>
-                @endforeach
-
 				<small class="text-success">Upvotes : {{ $q->upvotes }}</small>
 
 				<small class="text-danger">Downvotes : {{ $q->downvotes }}</small>
@@ -39,8 +41,11 @@
 			</div>
 
 		@endforeach
-		</ul>
-	</div>
+
+		</div>
+
+
+
 
 
 @endsection

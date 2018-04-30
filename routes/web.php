@@ -50,3 +50,6 @@ Route::post('/approve/{id}', 'PendingAnsController@approve');
 Route::post('/discard/{id}', 'PendingAnsController@discard');
 
 Route::get('/myQues', 'QuestionController@myQues');
+
+Route::get('/search', 'QuestionController@tagSearch');
+
