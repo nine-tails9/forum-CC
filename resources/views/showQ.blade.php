@@ -48,6 +48,9 @@
 			</form>
 			</div>
 	</div>
+	@if(Session::has('message'))
+		<p class="alert alert-info pull-right animated lightSpeedOut" style="width: 20%;">{{ Session::get('message') }}</p>
+	@endif
 	<hr>
 	<div class="row" style="margin: 10px;">
 		<div class="col col-md-7">

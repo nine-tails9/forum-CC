@@ -35,7 +35,8 @@ class AnswerController extends Controller
 
 
 
-    	return back();
+
+    	return back()->with('message', 'Answer Sent for Approval');;
 
     }
 }
