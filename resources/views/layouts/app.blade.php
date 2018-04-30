@@ -44,6 +44,11 @@
                     <li><a href="/create">Post Question</a></li>
                     
                     <li><a href="/myQues">My Questions</a></li>
+                    @if(Auth::check())
+                        @if(Auth::user()->admin)
+                            <li><a href="/adminPanel">Admin Panel</a></li>
+                        @endif
+                    @endif    
                     </ul>
 
 

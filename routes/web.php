@@ -53,3 +53,7 @@ Route::get('/myQues', 'QuestionController@myQues');
 
 Route::get('/search', 'QuestionController@tagSearch');
 
+Route::get('/adminPanel', 'HomeController@admin');
+
+
+Route::post('/makeAdmin/{id}', 'HomeController@make');
