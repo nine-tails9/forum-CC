@@ -16,6 +16,7 @@
 </head>
 <body>
     <div id="app">
+  
         <nav class="navbar navbar-inverse navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
@@ -48,9 +49,13 @@
                         @if(Auth::user()->admin == 1)
                             <li><a href="/adminPanel">Admin Panel</a></li>
                         @endif
-                    @endif    
+                    @endif
+                    <li class="dropdown">
+                        <a href="#"><notifications></notifications>
+                        </a>
+                    </li>
+                   
                     </ul>
-
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">

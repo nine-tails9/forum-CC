@@ -52,5 +52,10 @@ class User extends Authenticatable
         return $this->hasMany(pendingAns::class);
     }
 
+    public function message(){
+
+        return $this->hasMany(message::class);
+    }
+
 
 }

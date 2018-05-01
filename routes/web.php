@@ -11,8 +11,9 @@
 |
 */
 
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Auth::routes();
@@ -67,3 +68,5 @@ Route::post('/makeAdmin/{id}', 'HomeController@make');
 Route::post('/bonus/{id}', 'HomeController@bonus');
 
 Route::post('/active/{id}', 'HomeController@active');
+
+Route::get('/notifications', 'MessageController@fetch')->middleware('auth');

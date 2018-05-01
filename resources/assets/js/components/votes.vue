@@ -18,7 +18,7 @@
         ],
         created: function(){
 
-            axios.get("http://www.cataliist.in/check/" + this.user).then((response)=>{
+            axios.get("/check/" + this.user).then((response)=>{
             
                     for(var i = 0; i < response.data[0].length; i++)
                         if(response.data[0][i].question_id == this.qid)
@@ -49,8 +49,8 @@
 
                 this.up++;
                 if(this.downvoted)this.down--;
-                axios.post("http://www.cataliist.in/fetch/" + this.id + "/" + this.qid);
-                axios.post("http://www.cataliist.in/upvote/" + this.qid);
+                axios.post("/fetch/" + this.id + "/" + this.qid);
+                axios.post("/upvote/" + this.qid);
                 this.upvoted = true;
                 this.downvoted = false;
 
@@ -59,8 +59,8 @@
             decrease: function(){
                 if(this.upvoted)this.up--;
                 this.down++;
-                axios.post("http://www.cataliist.in/fetch2/" + this.id + "/" + this.qid);
-                axios.post("http://www.cataliist.in/downvote/" + this.qid);
+                axios.post("/fetch2/" + this.id + "/" + this.qid);
+                axios.post("/downvote/" + this.qid);
 
                 this.downvoted = true;
                 this.upvoted = false;

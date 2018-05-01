@@ -28,7 +28,6 @@ class CommentController extends Controller
     	$data['user_id'] = auth()->user()->id;
 
     	$data->save();
-
     	return back();
     }
 }

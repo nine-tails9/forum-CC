@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\answer;
 use App\pendingAns;
+
+use App\message;
 class AnswerController extends Controller
 {
     //
@@ -38,9 +40,11 @@ class AnswerController extends Controller
 
     	$nans->save();
 
+        $message = new message;
 
-
-
+        $message['message'] = "New Answer from ". auth()->user()->name;
+        $message['user_id'] = $req['user'];
+        $message->save(); 
     	return back()->with('message', 'Answer Sent for Approval');
 
     }
