@@ -45,6 +45,10 @@ While the code of the application is heavily documented it helps to know how the
 
 ### Project structure
 
+1. `All logic is placed under app\Http\Controllers`
+2. `All models are placed in app\ dir`
+3. `Database schema can be found app\database\migrations`
+4. `Frontend Part is mostly in app\views dir`
 
 ## Authors
 
@@ -55,4 +59,5 @@ While the code of the application is heavily documented it helps to know how the
 ## Project Link
 
 - <https://www.cataliist.in>
-Some features doesn't on hosting due to server issues.
+Some features doesn't work on hosting due to server issues.
+
