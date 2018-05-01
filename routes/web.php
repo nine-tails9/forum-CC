@@ -58,7 +58,7 @@ Route::get('/editQ/{id}', 'QuestionController@editQ');
 
 Route::get('/search', 'QuestionController@tagSearch');
 
-Route::get('/adminPanel', 'HomeController@admin');
+Route::get('/adminPanel', 'HomeController@admin')->middleware('adminCheck');
 
 Route::post('/suspend/{id}', 'HomeController@suspend');
 
