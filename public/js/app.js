@@ -43227,7 +43227,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     created: function created() {
         var _this = this;
 
-        axios.get("http://127.0.0.1:8000/check/" + this.user).then(function (response) {
+        axios.get("http://www.cataliist.in/check/" + this.user).then(function (response) {
 
             for (var i = 0; i < response.data[0].length; i++) {
                 if (response.data[0][i].question_id == _this.qid) {
@@ -43256,8 +43256,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.up++;
             if (this.downvoted) this.down--;
-            axios.post("http://127.0.0.1:8000/fetch/" + this.id + "/" + this.qid);
-            axios.post("http://127.0.0.1:8000/upvote/" + this.qid);
+            axios.post("http://www.cataliist.in/fetch/" + this.id + "/" + this.qid);
+            axios.post("http://www.cataliist.in/upvote/" + this.qid);
             this.upvoted = true;
             this.downvoted = false;
         },
@@ -43265,8 +43265,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         decrease: function decrease() {
             if (this.upvoted) this.up--;
             this.down++;
-            axios.post("http://127.0.0.1:8000/fetch2/" + this.id + "/" + this.qid);
-            axios.post("http://127.0.0.1:8000/downvote/" + this.qid);
+            axios.post("http://www.cataliist.in/fetch2/" + this.id + "/" + this.qid);
+            axios.post("http://www.cataliist.in/downvote/" + this.qid);
 
             this.downvoted = true;
             this.upvoted = false;
@@ -43286,7 +43286,7 @@ var render = function() {
   return _c("div", { staticClass: "panel-footer" }, [
     _c("p", [
       _c("span", { staticClass: "text-success" }, [
-        _vm._v("Upvotes : " + _vm._s(_vm.up))
+        _vm._v("Upvots : " + _vm._s(_vm.up))
       ]),
       _vm._v(" "),
       _c("span", { staticClass: "text-danger" }, [
