@@ -15,7 +15,7 @@ class CommentController extends Controller
 
         $req->validate([
 
-            'body' => 'required',
+            'Cbody' => 'required',
 
         ]);
 

@@ -4,7 +4,13 @@
 @section('content')
 
 	<div class="container">
-		
+		@if(auth()->user()->admin == 2)
+			<div class="row">
+				<div class="col">
+					<h4>Sorry You are suspended..Contact Admin</h4>
+				</div>
+			</div>
+		@else
 		<div class="row">
 			<h3>Type Your Question</h3>
 
@@ -28,5 +34,6 @@
 			</div>
 			<div class="row">@include('err')</div>
 		</div>
+		@endif
 	</div>
 @endsection

@@ -13,8 +13,9 @@
 				<div class="panel panel-default">
 				  <div class="panel-heading">
 				  	{{ $i->title }}
-				  	<div class="pull-right"><a href="/editQ/{{$i->id}}">Edit</a></div>
-
+				  	@if(auth()->user()->admin != 2)
+				  		<div class="pull-right"><a href="/editQ/{{$i->id}}">Edit</a></div>
+				  	@endif
 				  </div>
 				  <div class="panel-body">
 				    {{ $i->body }}

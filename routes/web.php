@@ -60,6 +60,10 @@ Route::get('/search', 'QuestionController@tagSearch');
 
 Route::get('/adminPanel', 'HomeController@admin');
 
+Route::post('/suspend/{id}', 'HomeController@suspend');
 
 Route::post('/makeAdmin/{id}', 'HomeController@make');
 
+Route::post('/bonus/{id}', 'HomeController@bonus');
+
+Route::post('/active/{id}', 'HomeController@active');

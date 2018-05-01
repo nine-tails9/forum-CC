@@ -29,9 +29,9 @@ class QuestionController extends Controller
 
         $req->validate([
 
-            'body' => 'required',
+            'Qbody' => 'required',
 
-            'title' => 'required'
+            'Qtitle' => 'required'
 
         ]);
 

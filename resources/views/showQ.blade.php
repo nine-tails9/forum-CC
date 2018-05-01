@@ -7,10 +7,12 @@
 	<div class="row">
 		@foreach($info as $i)
 			
-
 			<div class="panel panel-default">
 			  <div class="panel-heading">
 			  	{{ $i->title }}
+			  	@if(auth()->user()->admin == 1 || ( auth()->user()->admin != 2 && $i->user->id == auth()->user()->id))
+			  	<div class="pull-right"><a href="/editQ/{{$i->id}}">Edit</a></div>
+			  	@endif
 			  </div>
 			  <div class="panel-body">
 			    {{ $i->body }}
@@ -22,13 +24,16 @@
 
 			  <small><div class="pull-left">By: {{$info[0]->user->name }}</div></small>
 			  </div>
+
+			@if(auth()->user()->admin != 2)
 			  <votes v-bind:upcnt = "{{$i->upvotes}}" v-bind:downcnt = "{{$i->downvotes}}" v-bind:id = "{{ $info[0]->user->id }}" v-bind:user = "{{auth()->user()->id }}" v-bind:qid = "{{ $i->id }}"></votes>
+			  @endif
 			</div>
 
 		@endforeach
 
 	</div>
-
+	@if(auth()->user()->admin != 2)
 	<div class="row">
 		
 		<h4>Have an Answer?</h4>
@@ -48,6 +53,7 @@
 			</form>
 			</div>
 	</div>
+	@endif
 
 	@if(Session::has('message'))
 		<p class="alert alert-info pull-right animated lightSpeedIn" style="width: 20%;">{{ Session::get('message') }}</p>
@@ -79,6 +85,8 @@
 					  			<small class="pull-right">{{ $com->user->name }}</small>
 					  		</div>
 					  		@endforeach
+
+							@if(auth()->user()->admin != 2)
 					  		<form action="/forum/comment/{{ $x->id }}" method="post">
 					  			{{csrf_field()}}
 					  			<div class="form-group">
@@ -86,6 +94,7 @@
 							    <button type="submit" class="btn btn-xs btn-success">Comment</button>
 							  </div>
 					  		</form>
+					  		@endif
 
 
 					  </div>

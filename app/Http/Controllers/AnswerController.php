@@ -17,7 +17,7 @@ class AnswerController extends Controller
 
         $req->validate([
 
-            'body' => 'required',
+            'Abody' => 'required',
 
         ]);
 
@@ -41,7 +41,7 @@ class AnswerController extends Controller
 
 
 
-    	return back()->with('message', 'Answer Sent for Approval');;
+    	return back()->with('message', 'Answer Sent for Approval');
 
     }
 }
