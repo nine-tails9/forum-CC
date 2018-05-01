@@ -43286,7 +43286,7 @@ var render = function() {
   return _c("div", { staticClass: "panel-footer" }, [
     _c("p", [
       _c("span", { staticClass: "text-success" }, [
-        _vm._v("Upvots : " + _vm._s(_vm.up))
+        _vm._v("Upvotes : " + _vm._s(_vm.up))
       ]),
       _vm._v(" "),
       _c("span", { staticClass: "text-danger" }, [

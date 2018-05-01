@@ -45,7 +45,7 @@
                     
                     <li><a href="/myQues">My Questions</a></li>
                     @if(Auth::check())
-                        @if(Auth::user()->admin)
+                        @if(Auth::user()->admin == 1)
                             <li><a href="/adminPanel">Admin Panel</a></li>
                         @endif
                     @endif    

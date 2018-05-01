@@ -1,6 +1,6 @@
 <template>
     <div class="panel-footer">
-        <p><span class="text-success">Upvots : {{ up }}</span>&nbsp;<span class="text-danger"> Downvotes : {{down}}</span></p>
+        <p><span class="text-success">Upvotes : {{ up }}</span>&nbsp;<span class="text-danger"> Downvotes : {{down}}</span></p>
             <div class="btn btn-success btn-s" @click = "increase" v-if="!upvoted">Up</div>
             <div class="btn btn-danger btn-s" @click = "decrease" v-if="!downvoted">Down</div>
 
