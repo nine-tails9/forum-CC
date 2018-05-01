@@ -11,7 +11,7 @@ class MessageController extends Controller
 
     public function fetch(){
 
-    	$data = message::where('user_id', auth()->user()->id)->limit(10)->get();
+    	$data = message::where('user_id', auth()->user()->id)->latest()->limit(6)->get();
     	return response()->json([$data]);
 
     }

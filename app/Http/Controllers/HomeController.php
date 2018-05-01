@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\message;
 class HomeController extends Controller
 {
     /**
@@ -54,6 +55,11 @@ class HomeController extends Controller
 
     public function bonus(Request $req){
 
+        $message = new message;
+
+        $message['message'] = "Bonus Karma from ". auth()->user()->name;
+        $message['user_id'] = $req['id'];
+        $message->save(); 
         User::where('id', $req['id'])->increment('karma', $req['bonus']);
         return back()->with('message', 'Karma Given');
     }

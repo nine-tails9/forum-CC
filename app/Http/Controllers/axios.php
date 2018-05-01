@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Voted;
 use App\question;
+
+use App\message;
 class axios extends Controller
 {
     //
@@ -28,6 +30,10 @@ class axios extends Controller
 
     	}
 
+        $message = new message;
+        $message['message'] = "New Upvote from ". auth()->user()->name;
+        $message['user_id'] = $req['id'];
+        $message->save(); 
     	User::where('id', $req['id'])->increment('karma',10);
 
 
@@ -46,6 +52,11 @@ class axios extends Controller
 	    	User::where('id', $req['id'])->decrement('karma',10);
 
     	}
+
+        $message = new message;
+        $message['message'] = "New Downvote from ". auth()->user()->name;
+        $message['user_id'] = $req['id'];
+        $message->save(); 
     	User::where('id', $req['id'])->decrement('karma',2);
 
 
@@ -56,6 +67,7 @@ class axios extends Controller
     		['question_id', $req['id']],
     		['user_id', auth()->user()->id]
     		])->count();
+
 
     	if($cnt){
 
