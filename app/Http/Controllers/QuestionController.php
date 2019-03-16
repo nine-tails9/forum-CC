@@ -22,7 +22,7 @@ class QuestionController extends Controller
     }
     public function index(){
 
-    	return view('QuesCreate', compact('data'));
+    	return view('QuesCreate');
     }
 
     public function save(Request $req){
