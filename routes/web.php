@@ -16,6 +16,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('auth/{provider}', 'Auth\AuthController@redirectToProvider');
+
+Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallback');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
