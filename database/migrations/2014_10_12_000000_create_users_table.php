@@ -20,8 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('karma')->default(0);
             $table->integer('admin')->default(0);
-            $table->string('provider');
-            $table->string('provider_id');
+            $table->string('provider')->default('email');
+            $table->string('provider_id')->default('email');
             $table->rememberToken();
             $table->timestamps();
         });
